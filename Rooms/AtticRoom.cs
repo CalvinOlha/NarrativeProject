@@ -21,7 +21,8 @@ You can return to your [bedroom].
                     Game.Transition<Bedroom>();
                     break;
                 case "1989":
-                    Console.WriteLine("The chest opens and you get a key.");
+                    Console.WriteLine($"You opened the chest. \n•You got the Bedroom Key!");
+                    //Console.WriteLine("The chest opens and you get a key.");
                     isKeyCollected = true;
                     break;
                 default:

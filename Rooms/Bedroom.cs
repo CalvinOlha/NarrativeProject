@@ -28,12 +28,16 @@ From your closet, you see the [attic].
                     else
                     {
                         Console.WriteLine("You open the door with the key and leave your bedroom.");
-                        Game.Finish();
+                        Game.Transition<LivingRoom>();
                     }
                     break;
                 case "attic":
                     Console.WriteLine("You go up and enter your attic.");
                     Game.Transition<AtticRoom>();
+                    break;
+                case "pk teleport":
+                    Console.WriteLine("You teleported to the living room!");
+                    Game.Transition<LivingRoom>();
                     break;
                 default:
                     Console.WriteLine("Invalid command.");
