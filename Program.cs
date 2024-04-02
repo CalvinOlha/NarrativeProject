@@ -4,7 +4,10 @@ using System;
 namespace NarrativeProject
 {
      //Basic idea: Make an MOTHER/EarthBound Beginnings inspired text-based game.
-    
+     //Take place in one of the locations from the game (maybe)
+     //Items: Mostly stuff to recover HP, open doors or Gift Boxes and other items to help escape the building.
+     //Make new rooms remove the old ones
+     //
     internal class Program
     {
         static void Main(string[] args)
