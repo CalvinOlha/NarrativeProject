@@ -3,11 +3,18 @@ using System;
 
 namespace NarrativeProject
 {
+     //Basic idea: Make an MOTHER/EarthBound Beginnings inspired text-based game.
+    
     internal class Program
     {
         static void Main(string[] args)
         {
-            var game = new Game();
+
+          
+            var game = new Game(42);
+
+
+
             game.Add(new Bedroom());
             game.Add(new Bathroom());
             game.Add(new AtticRoom());

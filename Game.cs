@@ -10,6 +10,11 @@ namespace NarrativeProject
         static bool isFinished;
         static string nextRoom = "";
 
+        public Game(int n)
+        {
+
+        }
+
         internal void Add(Room room)
         {
             rooms.Add(room);
