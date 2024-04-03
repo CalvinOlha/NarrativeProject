@@ -7,6 +7,7 @@ namespace NarrativeProject
     {
         internal override string CreateDescription() =>
 @"You are in the Front Yard, it is very quiet outside.
+
 The [gate] in front of yo leads to the exit of the manor.
 Behind you is [front door].
 A [gravestone] is next to you.

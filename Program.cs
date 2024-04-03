@@ -1,5 +1,7 @@
 ﻿using NarrativeProject.Rooms;
 using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace NarrativeProject
 {
@@ -9,25 +11,59 @@ namespace NarrativeProject
     //Make new rooms, remove the old ones
 
     /*
-     Room ideas: Main Lobby (starting point), Kitchen, Basement, Attic, Garden/Backyard, 
-     Front yard + gates(EXIT/Last Room), 2 Bedrooms (1 kids + 1 adults), 2 Bathrooms (1 Downtsairs + 1 Upstairs)
+     Room ideas left: Basement, Attic, Garden, 2 Bedrooms (1 kids + 1 adult's)
     */
-    
+
     /*
-       Enemy ideas: Zombies, Ghosts, Bats, Ghost Armor, Bloody Zombie (Last Boss)
+       Enemy ideas: Zombies, Ghosts, Bats, Ghost Armor, Bloody Zombie
     */
+    [Serializable]  
+    public class SaveData
+    {
+        public int numberToSave;
+        public string stringToSave;
+
+        public SaveData(int numberToSave, string stringToSave)
+        {
+            this.numberToSave = numberToSave;
+            this.stringToSave = stringToSave;
+        }
+    }
+
+
     internal class Program
     {
+        static SaveData saveData;
         static void Main(string[] args)
         {
+            const string SaveFile = "Save.txt";
+            if (!File.Exists(SaveFile))
+            {
+                File.CreateText(SaveFile);
+            }
 
-          
+            var bf = new BinaryFormatter();
+
+            //saveData = new SaveData(20, "Ninten");
+            //bf.Serialize(File.OpenWrite(SaveFile), saveData);
+
+            saveData = bf.Deserialize(File.OpenRead(SaveFile)) as SaveData;
+            Console.WriteLine($"{saveData.stringToSave} has {saveData.numberToSave}$");
+
             var game = new Game(42);
 
+            //Add expects a Room argument
+            //Main Lobby is a Room (derived from base Room)
+            //Becuase of Polymorphism, I can use Main Lobby as an argument
+            //We substitute Main lobby into Room
 
-
+            //If a code expects type A
+            //It will also accept any type B
+            //Given that B is a subtype of A
+            //B is derived (inherited)
+            //This is Polymorphism
             game.Add(new MainLobby());
-            game.Add(new DownstairsBathroom());
+            game.Add(new Bathroom());
             game.Add(new SecondFloor());
             game.Add(new FrontYard());
             game.Add(new Kitchen());
@@ -36,7 +72,7 @@ namespace NarrativeProject
             {
                 Console.WriteLine("—————————————————————————————————————————————————————");
                 Console.WriteLine(game.CurrentRoomDescription);
-                string choice = Console.ReadLine().ToLower() ?? "";
+                string choice = Console.ReadLine().ToLower() ?? "";;
                 Console.Clear();
                 game.ReceiveChoice(choice);
             }

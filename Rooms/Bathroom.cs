@@ -2,22 +2,26 @@
 
 namespace NarrativeProject.Rooms
 {
-    internal class DownstairsBathroom : Room
+    internal class Bathroom : Room
     {
-        internal static bool isShowCode;
-
         internal override string CreateDescription() =>
-@"In your bathroom, the [bathtub] is filled with hot water.
+@"The bathroom has a nice calming vibe.
+
+The [bathtub] is filled with hot water.
 The [mirror] in front of you shows your reflection.
-You can return to your [main lobby].
+You can return to the [main lobby].
 ";
 
         internal override void ReceiveChoice(string choice)
         {
             switch (choice)
             {
-                case "bathtub":
-                    Console.WriteLine("You relax in the bath. Your HP completely recovered!");
+                case "bathtub":                    
+                    Console.WriteLine("You relax in the bath. ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Your HP completely recovered!");
+                    Console.ResetColor();
+
                     //Code that restores the players HP to 100%
                     break;
                 case "mirror":

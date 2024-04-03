@@ -7,6 +7,7 @@ namespace NarrativeProject
     {
         internal override string CreateDescription() =>
 @"You are in the kitchen, the smell of old rotting food fills the air...
+
 You see some [drawers] next to you.
 You see some [cupboards] above you.
 Behind you is the door back to the [main lobby].

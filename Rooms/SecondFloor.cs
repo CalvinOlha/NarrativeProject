@@ -8,6 +8,7 @@ namespace NarrativeProject.Rooms
 
         internal override string CreateDescription() =>
 @"The second floor is quiet and eerie.
+
 A Gift Box is locked with the code [????].
 You can return to your [main lobby].
 //Add the other rooms

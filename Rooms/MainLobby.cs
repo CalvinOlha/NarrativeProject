@@ -7,8 +7,9 @@ namespace NarrativeProject.Rooms
 
         internal override string CreateDescription() =>
 @"You wake up in the Main Lobby of the Rosemary Manor.
+
 In front of you is the [front door], seems to be the way out of here.
-To your right is the [downstairs bathroom].
+To your right is the [bathroom].
 To your left is the door to the [kitchen].
 Behind you are the stairs that lead to the [2nd floor].
 ";
@@ -17,9 +18,9 @@ Behind you are the stairs that lead to the [2nd floor].
         {
             switch (choice)
             {
-                case "downstairs bathroom":
+                case "bathroom":
                     Console.WriteLine("You enter the bathroom.");
-                    Game.Transition<DownstairsBathroom>();
+                    Game.Transition<Bathroom>();
                     break;
                 case "front door":
                     if (!SecondFloor.isKeyCollected)
