@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace NarrativeProject
 {
-    internal class Kitchen : Room
+    internal class AdultRoom : Room
     {
         internal override string CreateDescription() =>
 @"You are in the kitchen, the smell of old rotting food fills the air...

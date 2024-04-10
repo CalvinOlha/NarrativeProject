@@ -1,4 +1,8 @@
-﻿using System;
+﻿using NarrativeProject.Rooms;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace NarrativeProject.Rooms
 {
@@ -13,6 +17,7 @@ To your right is the [bathroom].
 To your left is the door to the [kitchen].
 Behind you are the stairs that lead to the [2nd floor].
 ";
+
 
         internal override void ReceiveChoice(string choice)
         {
@@ -44,6 +49,9 @@ Behind you are the stairs that lead to the [2nd floor].
                 case "pk teleport":
                     Console.WriteLine("You teleported to the front yard!");
                     Game.Transition<FrontYard>();
+                    break;
+                case "map":
+                    System.Diagnostics.Process.Start(new ProcessStartInfo { FileName = "Images\\ローズマリーさんのやしき.png", UseShellExecute = true });
                     break;
                 default:
                     Console.WriteLine("Invalid command.");

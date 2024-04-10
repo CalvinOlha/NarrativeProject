@@ -1,5 +1,6 @@
 ﻿using NarrativeProject.Rooms;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -67,12 +68,22 @@ namespace NarrativeProject
             game.Add(new SecondFloor());
             game.Add(new FrontYard());
             game.Add(new Kitchen());
+            game.Add(new KidsRoom());
+            game.Add(new AdultRoom());
+            game.Add(new Garden());
 
             while (!game.IsGameOver())
             {
                 Console.WriteLine("—————————————————————————————————————————————————————");
                 Console.WriteLine(game.CurrentRoomDescription);
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("[Goods]");
+                Console.WriteLine("[Map]");
+                Console.ResetColor();
+                Console.WriteLine($"\nInput:");    
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 string choice = Console.ReadLine().ToLower() ?? "";;
+                Console.ResetColor();
                 Console.Clear();
                 game.ReceiveChoice(choice);
             }

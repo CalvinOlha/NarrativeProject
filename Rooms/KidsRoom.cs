@@ -6,29 +6,31 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace NarrativeProject
 {
-    internal class Kitchen : Room
+    internal class KidsRoom : Room
     {
+        internal static bool isBaseKeyCollected;
         internal override string CreateDescription() =>
-@"You are in the kitchen, the smell of old rotting food fills the air...
+@"You are in the kids room.
 
-You see some [drawers] next to you.
-You see some [cupboards] above you.
-Behind you is the door back to the [main lobby].
+You see a [closet] next to you.
+Behind you is the door back to the [hallway].
 ";
 
         internal override void ReceiveChoice(string choice)
         {
             switch (choice)
             {
-                case "drawers":
-                    Console.WriteLine("all the blades of the knives look blunt...");
+                case "closet":
+                    Console.WriteLine($"You look inside the closet. \n You see a Basement Key in the closet.");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine($"You got the Basement Key!");
+                    isBaseKeyCollected = true;
+                    Console.ResetColor();
+
                     break;
-                case "cupboards":
-                    Console.WriteLine("all the food is dusty and canned...");
-                    break;
-                case "main lobby":
-                    Console.WriteLine("You go back to the main lobby");
-                    Game.Transition<MainLobby>();
+                case "hallway":
+                    Console.WriteLine("You go back to the second floor hallway.");
+                    Game.Transition<SecondFloor>();
                     break;
                 case "map":
                     System.Diagnostics.Process.Start(new ProcessStartInfo { FileName = "Images\\ローズマリーさんのやしき.png", UseShellExecute = true });

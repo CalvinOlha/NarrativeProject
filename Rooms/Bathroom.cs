@@ -1,11 +1,15 @@
-﻿using System;
+﻿using NarrativeProject.Rooms;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace NarrativeProject.Rooms
 {
     internal class Bathroom : Room
     {
         internal override string CreateDescription() =>
-@"The bathroom has a nice calming vibe.
+@"The bathroom has a nice calming feeling.
 
 The [bathtub] is filled with hot water.
 The [mirror] in front of you shows your reflection.

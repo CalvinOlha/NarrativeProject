@@ -1,4 +1,8 @@
-﻿using System;
+﻿using NarrativeProject.Rooms;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace NarrativeProject.Rooms
 {
@@ -7,11 +11,11 @@ namespace NarrativeProject.Rooms
         internal static bool isKeyCollected;
 
         internal override string CreateDescription() =>
-@"The second floor is quiet and eerie.
+@"The second floor hallway is quiet and eerie.
 
 A Gift Box is locked with the code [????].
 You can return to your [main lobby].
-//Add the other rooms
+You see a pink door that leads to the [kid's room].
 ";
 
         internal override void ReceiveChoice(string choice)
@@ -26,6 +30,10 @@ You can return to your [main lobby].
                     Console.WriteLine($"•You opened the Gift Box. \n•Inside the Gift Box there was a Kids Bedroom Key! \n•You got the Kids Bedroom Key!");
                     //Console.WriteLine("The chest opens and you get a key.");
                     isKeyCollected = true;
+                    break;
+                case "kid's room":
+                    Console.WriteLine("You enter the kid's room.");
+                    Game.Transition<KidsRoom>();
                     break;
                 default:
                     Console.WriteLine("Invalid command.");
